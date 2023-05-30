@@ -17,10 +17,20 @@ namespace WebApplication2rrr.Controllers
         {
             db = context;
         }
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Katalog()
         {
             return View(db.Phones.ToList());
         }
-  
+        //[Route("/Home/Katalog/{UserId}")]
+        //public IActionResult Katalog()
+        //{
+        //    return View(db.Phones.ToList());
+        //}
+        public IActionResult Login()
+        {
+            return View();
+        }
+
     }
 }

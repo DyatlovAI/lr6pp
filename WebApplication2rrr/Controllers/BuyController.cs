@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 using WebApplication2rrr.Models;
 
 namespace WebApplication2rrr.Controllers
@@ -6,7 +7,6 @@ namespace WebApplication2rrr.Controllers
     public class BuyController : Controller
     {
         MobileContext db;
-        public static int globalId;
         public BuyController(MobileContext context)
         {
             db = context;
@@ -14,26 +14,28 @@ namespace WebApplication2rrr.Controllers
         [HttpGet]
         public IActionResult Buy(int id)
         {
-            globalId = id;
             Phone phone = db.Phones.Find(id);//поиск объекта по айди
             return View("~/Views/Buy.cshtml", phone);
         }
 
         [HttpPost]
-        public IActionResult Buy1(string address)
+        public IActionResult Buy1(int idd, string name, string address, string phone)
         {
-            User user = db.Users.Find(1);
+            Phone ph = db.Phones.Find(idd);
+            var UserId = User.FindFirstValue("UserId");
             db.Orders.Add(
                 new Order
                 {
-                    UserId = 1,
+                    UserId = int.Parse(UserId),
+                    Name = name,
                     Address = address,
-                    ContactTelephone = user.NumberTelephone,
-                    PhoneId = globalId
+                    ContactTelephone = phone,
+                    PhoneId = idd
                 }
             );
             db.SaveChanges();
-            return View("~/Views/Thanks.cshtml", user);
+            ViewBag.SuccessMessage = "Спасибо за покупку!";
+            return View("~/Views/Thanks.cshtml", ph);
         }
     }
 }

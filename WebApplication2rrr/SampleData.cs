@@ -31,20 +31,10 @@ namespace WebApplication2rrr
                 );
                 
             }
-            if (!context.Users.Any())
-            {
-                context.Users.Add(
-                    new User
-                    {
-                        Name = "John",
-                        Sex = false,
-                        Role = "NOT_ADMIN",
-                        NumberTelephone = "898643357"
-                    }
-                );
+            
 
-            }
-            //context.SaveChanges();
+            
+        context.SaveChanges();
         }
     }
 }

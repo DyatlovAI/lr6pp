@@ -43,16 +43,6 @@ namespace WebApplication2rrr.Controllers
                 {
                     _dbContext.Users.Add(newUser);
                     _dbContext.SaveChanges();
-                    var claims = new List<Claim>
-                    {
-                        //new Claim(ClaimTypes.Name),
-                        new Claim("UserId", newUser.UserId.ToString()) // Сохранение UserId как дополнительного утверждения
-                    };
-
-                    var identity = new ClaimsIdentity(claims, "UserAuthentication");
-                    var principal = new ClaimsPrincipal(identity);
-                    HttpContext.SignInAsync(principal).Wait();
-
                     return RedirectToAction("RegUser", "User");
                 }
                 catch (Exception ex)
@@ -62,7 +52,7 @@ namespace WebApplication2rrr.Controllers
                 }
             }
 
-            return View(user);
+            return View("~/Views/Home/Registration.cshtml",user);
         }
 
         private string HashPassword(string password)
