@@ -1,0 +1,13 @@
+﻿@model WebApplication2rrr.Models.User
+<div class="container">
+    <h1>Профиль</h1>
+    <p>Email: @Model.Name</p>
+    <p>Sex: @Model.Sex</p>
+    <p>Role: @Model.Role</p>
+    <p>Number Telephone: @Model.NumberTelephone</p>
+
+    <div class="button-container">
+        <a href="/">Go to Home</a>
+        <a href="/Home/Index/@Model.UserId">Create Order</a>
+    </div>
+</div>

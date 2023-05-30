@@ -1,0 +1,21 @@
+﻿@model WebApplication2rrr.Models.Phone
+@{
+    ViewData["Title"] = "Телефон";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Магазин смартфонов</title>
+</head>
+<body>
+    <h3>Оформление заказа</h3>
+    <p>Смартфон @Model.Name</p>
+    <p>Цена @Model.Price</p>
+    <form method="post" action="@Url.Action("Buy1", "Buy")">
+        <input type="text" placeholder="адрес" name="address"/>
+        <input type="submit" value="Купить"/>
+    </form>
+</body>
+</html>

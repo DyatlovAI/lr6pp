@@ -1,0 +1,91 @@
+﻿@model WebApplication2rrr.Models.User
+
+<style>
+    body {
+        background-color: whitesmoke;
+        font-family: Arial, sans-serif;
+    }
+
+    .bodygr {
+        text-align: center;
+    }
+
+
+    h2 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+
+    .form-group input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: purple;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .nav-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+
+<h2>Регистрация</h2>
+
+@using (Html.BeginForm("Registration", "Registration", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="Name">Имя:</label>
+        @Html.TextBoxFor(m => m.Name, new { id = "Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Пол")
+        @Html.RadioButtonFor(m => m.Sex, true) М
+        @Html.RadioButtonFor(m => m.Sex, false) Ж
+    </div>
+
+    <div class="form-group">
+        <label for="NumberTelephone">Номер телефона:</label>
+        @Html.TextBoxFor(m => m.NumberTelephone, new { id = "NumberTelephone" })
+    </div>
+    <div class="form-group">
+        <label for="Password">Пароль:</label>
+        @Html.PasswordFor(m => m.Password, new { id = "Password" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Регистрация" />
+    </div>
+    <div class="form-group">
+        <label for="Vhod" class="bodygr">Есть аккаунт?<a class="" asp-area="" asp-controller="Login" asp-action="Login">Войти</a></label>
+
+    </div>
+}
