@@ -1,5 +1,17 @@
-﻿@model WebApplication2rrr.Models.User
-<div class="container">
+﻿@model IEnumerable<WebApplication2rrr.Models.User>
+@{
+ ViewBag.Title = "Все пользователи";
+ } 
+ <a asp-action="Create">Добавить пользователя</a>
+ <table class="table">
+    <tr><td>Имя</td><td>Sex</td><td>Role</td><td>Number</td></tr>
+ @foreach (var item in Model)
+{
+        <tr><td>@item.Name</td><td>@item.Role</td><td>@item.Role</td><td>@item.NumberTelephone</td></tr>
+ }
+ </table>
+@*@model WebApplication2rrr.Models.User*@
+@*<div class="container">
     <h1>Профиль</h1>
     <p>Email: @Model.Name</p>
     <p>Sex: @Model.Sex</p>
@@ -10,4 +22,27 @@
         <a href="/">Go to Home</a>
         <a href="/Home/Index/@Model.UserId">Create Order</a>
     </div>
-</div>
+</div>*@
+@*@model IEnumerable<WebApplication2rrr.Models.User>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Role</th>
+            <th>NumberTelephone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Sex</td>
+                    <td>@user.Role</td>
+                <td>@user.NumberTelephone</td>
+                </tr>
+        }
+    </tbody>
+</table>*@

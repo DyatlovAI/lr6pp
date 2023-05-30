@@ -18,6 +18,11 @@ namespace WebApplication2rrr.Controllers
             db = context;
         }
         [HttpGet]
+        public IActionResult Index()
+        {
+            return View(db.Phones.ToList());
+        }
+        [HttpGet]
         public IActionResult Katalog()
         {
             return View(db.Phones.ToList());

@@ -3,7 +3,6 @@
 <style>
     body {
         background-color: whitesmoke;
-        font-family: Arial, sans-serif;
     }
 
     .bodygr {
@@ -76,6 +75,10 @@
         <label for="NumberTelephone">Номер телефона:</label>
         @Html.TextBoxFor(m => m.NumberTelephone, new { id = "NumberTelephone" })
     </div>
+     <div class="form-group">
+            @Html.LabelFor(m => m.Role)
+            @Html.HiddenFor(m => m.Role)
+        </div>
     <div class="form-group">
         <label for="Password">Пароль:</label>
         @Html.PasswordFor(m => m.Password, new { id = "Password" })
@@ -86,6 +89,15 @@
     </div>
     <div class="form-group">
         <label for="Vhod" class="bodygr">Есть аккаунт?<a class="" asp-area="" asp-controller="Login" asp-action="Login">Войти</a></label>
-
+        ```
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <span>@error.ErrorMessage</span><br />
+        }
+    </div>
+}
     </div>
 }

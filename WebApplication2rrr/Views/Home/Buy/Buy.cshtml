@@ -1,7 +1,6 @@
-﻿@model WebApplication2rrr.Models.User
+﻿@model WebApplication2rrr.Models.Phone
 <style>
-    <style >
-    body {
+ body {
         background-color: whitesmoke;
         font-family: Arial, sans-serif;
     }
@@ -53,28 +52,32 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-</style>
+        </style>
+<body>
+    <h3>Оформление заказа</h3>
 
-    <h2>Вход</h2>
-    @using (Html.BeginForm("LoginUs","Login", FormMethod.Post))
-    {
-        <div class="form-group">
-            <label >Номер телефона</label>
-        @Html.TextBoxFor(m => m.NumberTelephone, new { id = "NumberTelephone" })
-            </div>
-                <div class="form-group">
-                <label for="Password">Пароль:</label>
-        @Html.PasswordFor(m => m.Password, new { id = "Password" })
-                </div>
-                    <div class="form-group">
-            <input type="submit" value="Вход" />
-        </div>
-    <div class="form-group">
-        <label for="Vhod" class="bodygr">Нет аккаунта?<a class="" asp-area="" asp-controller="Registration" asp-action="Registration">Регистрация</a></label>
-
+    <div class="info">
+        <p>Смартфон: @Model.Name</p>
+        <p>Цена: @Model.Price</p>
     </div>
-    }
 
-
+    <form method="post">
+        <input type="hidden" value="@ViewBag.PhoneId" name="PhoneID" />
+        <div class="form-group">
+        <label>Имя:</label>
+        <input type="text" name="name" /> <br />
+        </div>
+        <div class="form-group">
+        <label>Телефон:</label>
+        <input type="text" name="phone" /> <br />
+        </div>
+        <div class="form-group">
+        <label>Адрес:</label>
+        <input type="text" name="address" /> <br />
+        </div>
+        <div class="form-group">
+        <input type="submit" name="btn" value="Оформить заказ" />
+        </div>
+    </form>
+</body>
 

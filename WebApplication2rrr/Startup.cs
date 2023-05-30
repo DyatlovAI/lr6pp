@@ -48,7 +48,7 @@ namespace WebApplication2rrr
             {
                 endpoints.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Login}/{action=Vhod}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
             });
             
             app.UseHttpsRedirection();

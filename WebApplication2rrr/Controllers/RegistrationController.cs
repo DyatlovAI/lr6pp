@@ -9,9 +9,11 @@ namespace WebApplication2rrr.Controllers
     {
         private readonly MobileContext _dbContext;
 
+
         public RegistrationController(MobileContext dbContext)
         {
             _dbContext = dbContext;
+
         }
 
         [HttpGet]
@@ -23,6 +25,7 @@ namespace WebApplication2rrr.Controllers
         [HttpPost]
         public ActionResult RegistrationUser(User user)
         {
+
             if (ModelState.IsValid)
             {
                 // Хэширование пароля
@@ -50,6 +53,7 @@ namespace WebApplication2rrr.Controllers
                     // Обработка ошибки
                     Console.WriteLine(ex.Message);
                 }
+
             }
 
             return View("~/Views/Home/Registration.cshtml",user);

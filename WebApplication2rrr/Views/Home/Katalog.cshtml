@@ -1,14 +1,43 @@
 ﻿@model IEnumerable<WebApplication2rrr.Models.Phone>
 @{
     ViewData["Title"] = "Список смартфонов";
-    Layout = null;
 }
-<!DOCTYPE html>
-<html>
-<head>
+
     <title>Магазин смартфонов</title>
-</head>
-<body>
+    <style>
+        body {
+            background-color: whitesmoke;
+            
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 6px 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        
+
+            
+    </style>
+
+
     <h3>Смартфоны</h3>
     <table>
         <tr>
@@ -23,9 +52,8 @@
                     <td>@phone.Name</td>
                     <td>@phone.Company</td>
                     <td>@phone.Price</td>
-                    <td><a href="~Home/Buy/@phone.PhoneId">Купить</a></td>
+            <td><a href="~/Buy/Buy/@phone.PhoneId">Купить</a></td>
                 </tr>
         }
     </table>
-</body>
-</html>
+

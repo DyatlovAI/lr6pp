@@ -15,27 +15,32 @@ namespace WebApplication2rrr.Controllers
         public IActionResult Buy(int id)
         {
             Phone phone = db.Phones.Find(id);//поиск объекта по айди
-            return View("~/Views/Buy.cshtml", phone);
+            return View("~/Views/Home/Buy/Buy.cshtml", phone);
         }
-
-        [HttpPost]
-        public IActionResult Buy1(int idd, string name, string address, string phone)
+        [HttpGet]
+        public IActionResult Thanks()
         {
-            Phone ph = db.Phones.Find(idd);
+            return View("~/Views/Home/Thanks.cshtml");
+        }
+        [HttpPost]
+        public IActionResult Buy(int id, string name, string address, string phone)
+        {
+            Phone ph = db.Phones.Find(id);
             var UserId = User.FindFirstValue("UserId");
             db.Orders.Add(
                 new Order
                 {
-                    UserId = int.Parse(UserId),
+                    /*UserId = int.Parse(UserId),*/
+                    UserId = 1,
                     Name = name,
                     Address = address,
                     ContactTelephone = phone,
-                    PhoneId = idd
+                    PhoneId = id
                 }
             );
             db.SaveChanges();
             ViewBag.SuccessMessage = "Спасибо за покупку!";
-            return View("~/Views/Thanks.cshtml", ph);
+            return View("~/Views/Home/Buy/Thanks.cshtml");
         }
     }
 }
